@@ -25,10 +25,10 @@ export const login = async (req, res) => {
 };
 
 export const register = async (req, res) => {
-  const { email, password, role } = req.body;
+  const { email, password } = req.body;
 
   try {
-    const user = await User.create({ email, password, role });
+    const user = await User.create({ email, password });
     res.status(201).json({ message: "User created successfully", user });
   } catch (error) {
     res.status(500).json({ message: "Error creating user", error });
