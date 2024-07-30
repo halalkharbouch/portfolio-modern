@@ -25,6 +25,12 @@ export const login = async (req, res) => {
 };
 
 export const register = async (req, res) => {
+  if (req.body.role) {
+    return res
+      .status(403)
+      .json({ message: "User can not be created with role" });
+  }
+
   const { email, password } = req.body;
 
   try {
