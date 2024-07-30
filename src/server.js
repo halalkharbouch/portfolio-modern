@@ -60,10 +60,5 @@ app.use("/contact", contactRouter);
 app.use("/send-mail", mailRouter);
 app.use("/auth", authRouter);
 
-// Blog details route
-app.get("/blog-details", (req, res) => {
-  res.render("blog-details");
-});
-
 // Start server
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
