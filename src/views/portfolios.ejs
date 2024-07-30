@@ -1,0 +1,199 @@
+﻿<%- include("partials/header.ejs") %>
+
+   <main class="site-content" id="content">
+      <!-- START: Breadcrumb Area -->
+      <section class="breadcrumb_area" data-bg-image=".//img/breadcrumb/breadcrumb-bg.jpg" data-bg-color="#140C1C">
+         <div class="container">
+            <div class="row">
+               <div class="col">
+                  <div class="breadcrumb_content d-flex flex-column align-items-center">
+                     <h2 class="title wow fadeInUp" data-wow-delay=".3s">Portfolio</h2>
+                     <div class="breadcrumb_navigation wow fadeInUp" data-wow-delay=".5s">
+                        <span><a href="/">Home</a></span>
+                        <i class="far fa-long-arrow-right"></i>
+                        <span class="current-item">Portfolio</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <!-- END: Breadcrumb Area -->
+
+      <!-- PORTFOLIO SECTION START -->
+      <section class="portfolio-section" id="works-section">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="section-header text-center">
+                     <h2 class="section-title wow fadeInUp" data-wow-delay=".3s">My Recent Works</h2>
+                     <p class="wow fadeInUp" data-wow-delay=".4s"></p>
+                  </div>
+               </div>
+            </div>
+
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="portfolio-filter text-center wow fadeInUp" data-wow-delay=".5s">
+                     <div class="button-group filter-button-group">
+                        <button data-filter="*" class="active">All</button>
+                        <button data-filter=".web-development">Web</button>
+                        <button data-filter=".graphics-design">Graphic Design</button>
+                        <button data-filter=".3d-printing">3D Printing</button>
+                        <div class="active-bg"></div>
+                     </div>
+                  </div>
+
+                  <div class="portfolio-box wow fadeInUp" data-wow-delay=".6s">
+                     <div class="portfolio-sizer"></div>
+                     <div class="gutter-sizer"></div>
+                     <% projects.forEach(project=> { %>
+                        <div class="portfolio-item <%= project.projectCategory.replace(/\s+/g, '-').toLowerCase() %>"
+                           data-id="<%= project._id %>">
+                           <div class="image-box">
+                              <img src=<%=project.projectImgUrls[0] %> alt="">
+                           </div>
+                           <div class="content-box">
+                              <h3 class="portfolio-title">
+                                 <%= project.projectName %>
+                              </h3>
+                              <p>
+                                 <%= project.projectShortAbout %>
+                              </p>
+                              <i class="flaticon-up-right-arrow"></i>
+                              <button data-mfp-src="#portfolio-wrapper-<%= project._id %>"
+                                 class="portfolio-link modal-popup"></button>
+                           </div>
+                        </div>
+                        <% }) %>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <!-- PORTFOLIO SECTION END -->
+
+      <!-- start: Portfolio Popup -->
+      <% projects.forEach((project, index)=> { %>
+         <div id="portfolio-wrapper-<%= project._id %>"
+            class="popup_content_area project-popup zoom-anim-dialog mfp-hide" data-lenis-prevent="">
+            <div class="popup_modal_img">
+               <img src="<%=project.projectImgUrls[0]%>" alt="">
+            </div>
+            <div class="popup_modal_content">
+               <div class="portfolio_info">
+                  <div class="portfolio_info_text">
+                     <h2 class="title">
+                        <%= project.projectName %>
+                     </h2>
+                     <div class="desc">
+                        <p>
+                           <%= project.projectAbout %>
+                        </p>
+                     </div>
+                     <a href="<%=project.projectLivePreviewLink%>" class="btn tj-btn-primary" target="_blank">Live
+                        Preview <i class="fal fa-arrow-right"></i></a>
+                  </div>
+                  <div class="portfolio_info_items">
+                     <div class="info_item">
+                        <div class="key">Category</div>
+                        <div class="value">
+                           <%= project.projectCategory %>
+                        </div>
+                     </div>
+                     <div class="info_item">
+                        <div class="key">Client</div>
+                        <div class="value">
+                           <%= project.projectClient %>
+                        </div>
+                     </div>
+                     <div class="info_item">
+                        <div class="key">Start Date</div>
+                        <div class="value">
+                           <%= project.projectYear %>
+                        </div>
+                     </div>
+                     <div class="info_item">
+                        <div class="key">Designer</div>
+                        <div class="value"><a href="#">
+                              <%= project.projectDesigner %>
+                           </a></div>
+                     </div>
+                  </div>
+               </div>
+               <div class="portfolio_gallery owl-carousel">
+                  <div class="gallery_item">
+                     <img src="<%=project.projectImgUrls[1]%>" alt="">
+                  </div>
+                  <div class="gallery_item">
+                     <img src="<%=project.projectImgUrls[2]%>" alt="">
+                  </div>
+                  <div class="gallery_item">
+                     <img src="<%=project.projectImgUrls[3]%>" alt="">
+                  </div>
+                  <div class="gallery_item">
+                     <img src="<%=project.projectImgUrls[4]%>" alt="">
+                  </div>
+               </div>
+               <div class="portfolio_description">
+                  <h2 class="title">Project Description</h2>
+                  <div class="desc">
+                     <p>
+                        <%= project.projectDescription %>
+                     </p>
+                  </div>
+               </div>
+               <div class="portfolio_story_approach">
+                  <div class="portfolio_story">
+                     <div class="story_title">
+                        <h4 class="title">The story</h4>
+                     </div>
+                     <div class="story_content">
+                        <p>
+                           <%= project.projectStory %>
+                        </p>
+                     </div>
+                  </div>
+                  <div class="portfolio_approach">
+                     <div class="approach_title">
+                        <h4 class="title">OUR APPROACH</h4>
+                     </div>
+                     <div class="approach_content">
+                        <p>
+                           <%= project.projectApproach %>
+                        </p>
+                     </div>
+                  </div>
+               </div>
+               <div class="portfolio_navigation">
+                  <div class="navigation_item prev-project">
+                     <a href="#" class="project" data-id="<%= index %>" data-direction="prev">
+                        <i class="fal fa-arrow-left"></i>
+                        <div class="nav_project">
+                           <div class="label">Previous Project</div>
+                           <h3 class="title">
+                              <%= projects[index - 1] ? projects[index - 1].projectName : '' %>
+                           </h3>
+                        </div>
+                     </a>
+                  </div>
+                  <div class="navigation_item next-project">
+                     <a href="#" class="project" data-id="<%= index %>" data-direction="next">
+                        <div class="nav_project">
+                           <div class="label">Next Project</div>
+                           <h3 class="title">
+                              <%= projects[index + 1] ? projects[index + 1].projectName : '' %>
+                           </h3>
+                        </div>
+                        <i class="fal fa-arrow-right"></i>
+                     </a>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <% }) %>
+            <!-- end: Portfolio Popup -->
+
+   </main>
+
+   <%- include("partials/footer.ejs") %>

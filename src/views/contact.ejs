@@ -1,0 +1,149 @@
+﻿<%- include("partials/header.ejs") %>
+
+   <main class="site-content" id="content">
+      <!-- START: Breadcrumb Area -->
+      <section class="breadcrumb_area" data-bg-image=".//img/breadcrumb/breadcrumb-bg.jpg" data-bg-color="#140C1C">
+         <div class="container">
+            <div class="row">
+               <div class="col">
+                  <div class="breadcrumb_content d-flex flex-column align-items-center">
+                     <h2 class="title wow fadeInUp" data-wow-delay=".3s">Contact</h2>
+                     <div class="breadcrumb_navigation wow fadeInUp" data-wow-delay=".5s">
+                        <span><a href="/">Home</a></span>
+                        <i class="far fa-long-arrow-right"></i>
+                        <span class="current-item">Contact</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <!-- END: Breadcrumb Area -->
+
+      <!-- start: Contact Area -->
+      <section class="contact-section" id="contact-section">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-6 col-md-7 order-2 order-md-1">
+                  <div class="contact-form-box wow fadeInLeft" data-wow-delay=".3s">
+                     <div class="section-header">
+                        <h2 class="section-title">Let’s work together!</h2>
+                        <p>Ad Meliora - Towards Better Things</p>
+                     </div>
+                     <div class="tj-contact-form">
+                        <form id="contact-form-id">
+                           <div class="row gx-3">
+                              <div class="col-sm-6">
+                                 <div class="form_group required-field-block">
+                                    <input type="text" name="conName" id="conName" placeholder="First name"
+                                       autocomplete="off">
+                                    <div class="required-icon">
+                                       <div class="text">*</div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-sm-6">
+                                 <div class="form_group required-field-block">
+                                    <input type="text" name="conLName" id="conLName" placeholder="Last name"
+                                       autocomplete="off">
+                                    <div class="required-icon">
+                                       <div class="text">*</div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-sm-6">
+                                 <div class="form_group required-field-block">
+                                    <input type="email" name="conEmail" id="conEmail" placeholder="Email address"
+                                       autocomplete="off">
+                                    <div class="required-icon">
+                                       <div class="text">*</div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-sm-6">
+                                 <div class="form_group required-field-block">
+                                    <input type="tel" name="conPhone" id="conPhone" placeholder="Phone number"
+                                       autocomplete="off">
+                                    <div class="required-icon">
+                                       <div class="text">*</div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-12">
+                                 <div class="form_group required-field-block">
+                                    <select name="conService" id="conService" class="tj-nice-select">
+                                       <option value="" selected="" disabled="">Choose Service</option>
+                                       <option value="Web Development">Web Development</option>
+                                       <option value="Graphic design">Graphic Design</option>
+                                       <option value="3D Printing and Design">3D Printing and Design</option>
+                                       <option value="IT Support">IT Support</option>
+                                       <option value="Automation">Automation</option>
+                                    </select>
+                                    <div class="required-icon">
+                                       <div class="text">*</div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-12">
+                                 <div class="form_group required-field-block">
+                                    <textarea name="conMessage" id="conMessage" placeholder="Message"></textarea>
+                                    <div class="required-icon">
+                                       <div class="text">*</div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-12">
+                                 <div class="form_btn">
+                                    <button type="submit" class="btn tj-btn-primary">Send Message</button>
+                                 </div>
+                              </div>
+                           </div>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-lg-5 offset-lg-1 col-md-5 d-flex flex-wrap align-items-center order-1 order-md-2">
+                  <div class="contact-info-list">
+                     <ul class="ul-reset">
+                        <li class="d-flex flex-wrap align-items-center position-relative wow fadeInRight"
+                           data-wow-delay=".4s">
+                           <div class="icon-box">
+                              <i class="flaticon-phone-call"></i>
+                           </div>
+                           <div class="text-box">
+                              <p>Phone</p>
+                              <a href="tel:+2347043416479">+234 704 341 6479</a>
+                           </div>
+                        </li>
+                        <li class="d-flex flex-wrap align-items-center position-relative wow fadeInRight"
+                           data-wow-delay=".5s">
+                           <div class="icon-box">
+                              <i class="flaticon-mail-inbox-app"></i>
+                           </div>
+                           <div class="text-box">
+                              <p>Email</p>
+                              <a href="mailto:bawanallahbilyaminu@gmail.com">bawanallahbilyaminu@gmail.com</a>
+                           </div>
+                        </li>
+                        <li class="d-flex flex-wrap align-items-center position-relative wow fadeInRight"
+                           data-wow-delay=".6s">
+                           <div class="icon-box">
+                              <i class="flaticon-location"></i>
+                           </div>
+                           <div class="text-box">
+                              <p>Address</p>
+                              <a href="https://www.google.com/maps/dir/?api=1&destination=Bafarawa+Estate+Mini+Market,+Sama+Rd,+Sokoto+840103,+Sokoto"
+                                 target="_blank">Bafarawa
+                                 Estate, <br>17 840103, Sokoto Nigeria</a>
+                           </div>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <!-- end: Contact Area -->
+   </main>
+
+   <%- include('partials/footer.ejs') %>

@@ -1,0 +1,7 @@
+node_modules/
+
+# Other ignore rules
+node_modules/
+.env
+*.log
+.DS_Store
