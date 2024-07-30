@@ -48,7 +48,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // });
 
 mongoose
-  .connect(process.env.MONGO_LOACL_URI)
+  .connect(process.env.MONGO_ATLAS_URI)
   .then(() => console.log("Connected to DB"))
   .catch((err) => console.log(err));
 
