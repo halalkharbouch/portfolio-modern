@@ -90,13 +90,19 @@
                            </div>
                         </div>
                         <div class="share_link">
-                           <a href="#" target="_blank" class="facebook" title="Share this on Facebook"><i
+                           <a href="#" onclick="shareOnFacebook('https://tinyurl.com/bawanallah')" target="_blank"
+                              class="facebook" title="Share this on Facebook"><i
                                  class="fa-brands fa-facebook-f"></i></a>
-                           <a href="#" class="twitter" title="Share this on Twitter" target="_blank"><i
+                           <a href="#"
+                              onclick="shareOnTwitter('https://tinyurl.com/bawanallah', 'Check out this blog post!')"
+                              target="_blank" class="twitter" title="Share this on Twitter"><i
                                  class="fa-brands fa-x-twitter"></i></a>
-                           <a href="#" class="linkedin" title="Share this on Linkedin" target="_blank"><i
+                           <a href="#" onclick="shareOnLinkedIn('https://tinyurl.com/bawanallah')" class="linkedin"
+                              title="Share this on Linkedin" target="_blank"><i
                                  class="fa-brands fa-linkedin-in"></i></a>
-                           <a href="#" class="pinterest" title="Pin this Post" target="_blank"><i
+                           <a href="#"
+                              onclick="shareOnPinterest('https://tinyurl.com/bawanallah', 'https://firebasestorage.googleapis.com/v0/b/portfolio-ejs.appspot.com/o/1722530977228portfolio-ejs-blog-details-img.png?alt=media&token=55a5bdbd-0375-4304-8cec-1308ec4a17b6')"
+                              class="pinterest" title="Pin this Post" target="_blank"><i
                                  class="fa-brands fa-pinterest-p"></i></a>
                         </div>
                      </div>
@@ -309,7 +315,8 @@
                            </li>
                            <li><a href="/blog?tag=Web Development">Web Development</a> (<%=
                                  blogByTags.webDevBlogs.length %>)</li>
-                           <li><a href="/blog?tag=3D Printing">3D Printing</a> (<%= blogByTags.printing3DBlogs.length %>)</li>
+                           <li><a href="/blog?tag=3D Printing">3D Printing</a> (<%= blogByTags.printing3DBlogs.length %>
+                                 )</li>
                            <li><a href="/blog?tag=Finance">Finance</a> (<%= blogByTags.financeBlogs.length %>)</li>
                         </ul>
                      </div>
