@@ -52,22 +52,26 @@
 
                            <div class="tj-post__content">
                               <p>
-                                 <%= post.blogBody %>
-                              </p>
-                              <h6>Key Points</h6>
-                              <ul>
-                                 <% post.blogKeyPoints.forEach(point=> { %>
-                                    <li>
-                                       <%= point %>
-                                    </li>
-                                    <% }) %>
+                                 <%- post.blogBody %>
 
-                              </ul>
-
-                              <h4>Conclusion</h4>
-                              <p>
-                                 <%= post.blogConclusion %>
                               </p>
+                              <% if(post.blogKeyPoints.length> 0) {%>
+                                 <h6>Key Points</h6>
+                                 <ul>
+                                    <% post.blogKeyPoints.forEach(point=> { %>
+                                       <li>
+                                          <%= point %>
+                                       </li>
+                                       <% }) %>
+
+                                 </ul>
+                                 <%} %>
+
+
+                                    <h4>Conclusion</h4>
+                                    <p>
+                                       <%= post.blogConclusion %>
+                                    </p>
                            </div>
                         </div>
                      </article>

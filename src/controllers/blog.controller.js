@@ -102,9 +102,14 @@ export const getBlog = async (req, res) => {
 };
 
 export const createBlogPost = async (req, res) => {
+  console.log("Creating blog");
   try {
+    // Increase timeout for this request
+    req.setTimeout(5 * 60 * 1000); // 5 minutes in milliseconds
+
     // Validate request body
     const { blogTitle, blogBody, ...otherFields } = req.body;
+
 
     if (!blogTitle || !blogBody) {
       return res.status(400).json({ error: "Title and content are required" });

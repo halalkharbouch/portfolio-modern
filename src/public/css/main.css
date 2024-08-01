@@ -3812,4 +3812,13 @@ body.absolute_header .breadcrumb_area {
 	border-radius: 50%;
 }
 
+/* code formating */
+.code-container {
+	background-color: var(--tj-theme-accent-2);
+	padding: 20px 10px;
+	border-radius: 5px;
+	font-family: monospace;
+	
+}
+
 /* END: Modal CSS */

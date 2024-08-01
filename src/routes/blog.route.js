@@ -22,7 +22,7 @@ router.get("/get-blog/:blogId", getBlog);
 router.post(
   "/add-blog-post",
   authenticateToken,
-  authorizeRole,
+  authorizeRole(["admin"]),
   limiter,
   upload.array("blogImgUrls", 5),
   createBlogPost

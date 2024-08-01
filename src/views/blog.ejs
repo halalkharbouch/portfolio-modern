@@ -68,13 +68,13 @@
                                                 post.blogComments.length %>)</a></span>
                                     </div>
                                     <h3 class="tj-post__title entry-title">
-                                       <a href="/blog-details">
+                                       <a href="/blog/get-blog/<%= post._id %>">
                                           <%= post.blogTitle %>
                                        </a>
                                     </h3>
                                     <div class="tj-post__excerpt">
                                        <p>
-                                          <%= trimText(post.blogBody, 250) %>
+                                          <%= trimText(post.blogConclusion, 250) %>
                                        </p>
                                     </div>
                                     <div class="tj-post__btn">
