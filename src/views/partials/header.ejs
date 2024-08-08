@@ -1,182 +1,246 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
 
     <!-- Site Title -->
-    <title>Bawan Allah - Portfolio</title>
+    <title>Bawan Allah - <%= title %></title>
+
+    <% if (title==="Post Details") { %>
+    <!-- higligjs -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css"
+    />
+    <% } %>
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C8LM7R083F"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-C8LM7R083F"
+    ></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
 
-        gtag('config', 'G-C8LM7R083F');
+      gtag('config', 'G-C8LM7R083F');
     </script>
 
     <!-- Place favicon.ico in the root directory -->
-    <link rel="apple-touch-icon" href="/img/favicon.ico">
-    <link rel="shortcut icon" type="image/png" href="/img/favicon.ico">
+    <link rel="apple-touch-icon" href="/img/favicon.ico" />
+    <link rel="shortcut icon" type="image/png" href="/img/favicon.ico" />
 
     <!-- CSS here -->
-    <link rel="stylesheet" href="/css/animate.min.css">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/font-awesome-pro.min.css">
-    <link rel="stylesheet" href="/css/flaticon_gerold.css">
-    <link rel="stylesheet" href="/css/nice-select.css">
-    <link rel="stylesheet" href="/css/backToTop.css">
-    <link rel="stylesheet" href="/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="/css/swiper.min.css">
-    <link rel="stylesheet" href="/css/odometer-theme-default.css">
-    <link rel="stylesheet" href="/css/magnific-popup.css">
-    <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/light-mode.css">
-    <link rel="stylesheet" href="/css/meanmenu.css">
-    <link rel="stylesheet" href="/css/responsive.css">
-    <link rel="stylesheet" href="/css/spinner.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-    <link rel="stylesheet" href="/css/requiredFiekdsCss.css">
+    <link rel="stylesheet" href="/css/animate.min.css" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/font-awesome-pro.min.css" />
+    <link rel="stylesheet" href="/css/flaticon_gerold.css" />
+    <link rel="stylesheet" href="/css/nice-select.css" />
+    <link rel="stylesheet" href="/css/backToTop.css" />
+    <link rel="stylesheet" href="/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="/css/swiper.min.css" />
+    <link rel="stylesheet" href="/css/odometer-theme-default.css" />
+    <link rel="stylesheet" href="/css/magnific-popup.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/light-mode.css" />
+    <link rel="stylesheet" href="/css/meanmenu.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+    <link rel="stylesheet" href="/css/spinner.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+    />
+    <link rel="stylesheet" href="/css/requiredFiekdsCss.css" />
 
     <% if (haveAdditionalCss) { %>
-        <link rel="stylesheet" href="/css/main-2.css">
-        <link rel="stylesheet" href="/css/main-3.css">
-        <link rel="stylesheet" href="/css/responsive-2.css">
-        <link rel="stylesheet" href="/css/responsive-3.css">
-        <% } %>
-</head>
+    <link rel="stylesheet" href="/css/main-2.css" />
+    <link rel="stylesheet" href="/css/main-3.css" />
+    <link rel="stylesheet" href="/css/responsive-2.css" />
+    <link rel="stylesheet" href="/css/responsive-3.css" />
+    <% } %>
+  </head>
 
-<body>
+  <body>
     <!-- Overlay -->
     <div id="overlay" class="overlay"></div>
 
     <!-- Loading animation -->
     <svg id="spinner" class="spinner" viewBox="0 0 50 50">
-        <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+      <circle
+        class="path"
+        cx="25"
+        cy="25"
+        r="20"
+        fill="none"
+        stroke-width="5"
+      ></circle>
     </svg>
 
     <!-- Preloader Area Start -->
     <div class="preloader">
-        <svg viewbox="0 0 1000 1000" preserveaspectratio="none">
-            <path id="preloaderSvg" d="M0,1005S175,995,500,995s500,5,500,5V0H0Z"></path>
-        </svg>
+      <svg viewbox="0 0 1000 1000" preserveaspectratio="none">
+        <path
+          id="preloaderSvg"
+          d="M0,1005S175,995,500,995s500,5,500,5V0H0Z"
+        ></path>
+      </svg>
 
-        <div class="preloader-heading">
-            <div class="load-text">
-                <span>L</span>
-                <span>o</span>
-                <span>a</span>
-                <span>d</span>
-                <span>i</span>
-                <span>n</span>
-                <span>g</span>
-            </div>
+      <div class="preloader-heading">
+        <div class="load-text">
+          <span>L</span>
+          <span>o</span>
+          <span>a</span>
+          <span>d</span>
+          <span>i</span>
+          <span>n</span>
+          <span>g</span>
         </div>
+      </div>
     </div>
     <!-- Preloader Area End -->
 
     <!-- start: Back To Top -->
     <div class="progress-wrap" id="scrollUp">
-        <svg class="progress-circle svg-content" width="100%" height="100%" viewbox="-1 -1 102 102">
-            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
-        </svg>
+      <svg
+        class="progress-circle svg-content"
+        width="100%"
+        height="100%"
+        viewbox="-1 -1 102 102"
+      >
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
+      </svg>
     </div>
     <!-- end: Back To Top -->
 
     <!-- HEADER START -->
     <header class="tj-header-area header-absolute">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 d-flex flex-wrap align-items-center">
-                    <div class="logo-box">
-                        <a href="/">
-                            <img src="/img/logo/B-logo.png" alt="">
-                        </a>
-                    </div>
-                    <div class="header-menu" id="headerMenu">
-                        <nav>
-                            <ul>
-                                <li class="<%= title === 'Home Page' ? 'current-menu-ancestor' : '' %>">
-                                    <a class="" href="/">Home</a>
-                                </li>
-                                <li class="<%= title === 'About' ? 'current-menu-ancestor' : '' %>"><a
-                                        href="/about">About</a></li>
-                                <li class="<%= title === 'Services' ? 'current-menu-ancestor' : '' %>"><a
-                                        href="/services">Services</a></li>
-                                <li class="<%= title === 'Portfolios' ? 'current-menu-ancestor' : '' %>"><a
-                                        href="/portfolios">Portfolios</a></li>
-                                <li class="<%= title === 'Blog' ? 'current-menu-ancestor' : '' %>">
-                                    <a href="/blog">Blog</a>
-                                </li>
-                                <li class="<%= title === 'Contact' ? 'current-menu-ancestor' : '' %>"><a
-                                        href="/contact">Contact</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                    <div class="mobile-menu d-lg-none"></div>
-                    <div class="header-button">
-                        <a href="/contact" class="btn tj-btn-primary">Hire me!</a>
-                    </div>
-                    <div class="menu-bar d-lg-none">
-                        <button>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </button>
-                    </div>
-                </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-12 d-flex flex-wrap align-items-center">
+            <div class="logo-box">
+              <a href="/">
+                <img src="/img/logo/B-logo.png" alt="" />
+              </a>
             </div>
+            <div class="header-menu" id="headerMenu">
+              <nav>
+                <ul>
+                  <li
+                    class="<%= title === 'Home Page' ? 'current-menu-ancestor' : '' %>"
+                  >
+                    <a class="" href="/">Home</a>
+                  </li>
+                  <li
+                    class="<%= title === 'About' ? 'current-menu-ancestor' : '' %>"
+                  >
+                    <a href="/about">About</a>
+                  </li>
+                  <li
+                    class="<%= title === 'Services' ? 'current-menu-ancestor' : '' %>"
+                  >
+                    <a href="/services">Services</a>
+                  </li>
+                  <li
+                    class="<%= title === 'Portfolios' ? 'current-menu-ancestor' : '' %>"
+                  >
+                    <a href="/portfolios">Portfolios</a>
+                  </li>
+                  <li
+                    class="<%= title === 'Blog' ? 'current-menu-ancestor' : '' %>"
+                  >
+                    <a href="/blog">Blog</a>
+                  </li>
+                  <li
+                    class="<%= title === 'Contact' ? 'current-menu-ancestor' : '' %>"
+                  >
+                    <a href="/contact">Contact</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+            <div class="mobile-menu d-lg-none"></div>
+            <div class="header-button">
+              <a href="/contact" class="btn tj-btn-primary">Hire me!</a>
+            </div>
+            <div class="menu-bar d-lg-none">
+              <button>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
+            </div>
+          </div>
         </div>
+      </div>
     </header>
     <header class="tj-header-area header-2 header-sticky sticky-out">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 d-flex flex-wrap align-items-center">
-                    <div class="logo-box">
-                        <a href="/">
-                            <img src="/img/logo/B-logo.png" alt="">
-                        </a>
-                    </div>
-                    <div class="header-menu">
-                        <nav>
-                            <ul>
-                                <li class="<%= title === 'Home Page' ? 'current-menu-ancestor' : '' %>">
-                                    <a class="" href="/">Home</a>
-                                </li>
-                                <li class="<%= title === 'About' ? 'current-menu-ancestor' : '' %>"><a
-                                        href="/about">About</a></li>
-                                <li class="<%= title === 'Services' ? 'current-menu-ancestor' : '' %>"><a
-                                        href="/services">Services</a></li>
-                                <li class="<%= title === 'Portfolios' ? 'current-menu-ancestor' : '' %>"><a
-                                        href="/portfolios">Portfolios</a></li>
-                                <li class="<%= title === 'Blog' ? 'current-menu-ancestor' : '' %>">
-                                    <a href="/blog">Blog</a>
-                                </li>
-                                <li class="<%= title === 'Contact' ? 'current-menu-ancestor' : '' %>"><a
-                                        href="/contact">Contact</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                    <div class="mobile-menu d-lg-none"></div>
-                    <div class="header-button">
-                        <a href="/contact" class="btn tj-btn-primary">Hire me!</a>
-                    </div>
-                    <div class="menu-bar d-lg-none">
-                        <button>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </button>
-                    </div>
-                </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-12 d-flex flex-wrap align-items-center">
+            <div class="logo-box">
+              <a href="/">
+                <img src="/img/logo/B-logo.png" alt="" />
+              </a>
             </div>
+            <div class="header-menu">
+              <nav>
+                <ul>
+                  <li
+                    class="<%= title === 'Home Page' ? 'current-menu-ancestor' : '' %>"
+                  >
+                    <a class="" href="/">Home</a>
+                  </li>
+                  <li
+                    class="<%= title === 'About' ? 'current-menu-ancestor' : '' %>"
+                  >
+                    <a href="/about">About</a>
+                  </li>
+                  <li
+                    class="<%= title === 'Services' ? 'current-menu-ancestor' : '' %>"
+                  >
+                    <a href="/services">Services</a>
+                  </li>
+                  <li
+                    class="<%= title === 'Portfolios' ? 'current-menu-ancestor' : '' %>"
+                  >
+                    <a href="/portfolios">Portfolios</a>
+                  </li>
+                  <li
+                    class="<%= title === 'Blog' ? 'current-menu-ancestor' : '' %>"
+                  >
+                    <a href="/blog">Blog</a>
+                  </li>
+                  <li
+                    class="<%= title === 'Contact' ? 'current-menu-ancestor' : '' %>"
+                  >
+                    <a href="/contact">Contact</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+            <div class="mobile-menu d-lg-none"></div>
+            <div class="header-button">
+              <a href="/contact" class="btn tj-btn-primary">Hire me!</a>
+            </div>
+            <div class="menu-bar d-lg-none">
+              <button>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
+            </div>
+          </div>
         </div>
+      </div>
     </header>
     <!-- HEADER END -->
+  </body>
+</html>

@@ -1,7 +1,7 @@
-import { limit } from "firebase/firestore";
-import Blog from "../models/blog.model.js";
-import Comment from "../models/comment.model.js";
-import Reply from "../models/reply.model.js";
+import { limit } from 'firebase/firestore';
+import Blog from '../models/blog.model.js';
+import Comment from '../models/comment.model.js';
+import Reply from '../models/reply.model.js';
 import {
   getBlogsByTags,
   uploadToFirebase,
@@ -10,19 +10,20 @@ import {
   sanitizeUsername,
   sanitizeEmail,
   formatDateUtil,
-} from "../utils/utils.js";
+} from '../utils/utils.js';
+import slugify from 'slugify';
 
 export const getBlogs = async (req, res) => {
   const page = parseInt(req.query.page, 10) || 1;
   const LIMIT = 10;
-  const tag = req.query.tag || "";
-  const searchTerm = req.query.q || "";
+  const tag = req.query.tag || '';
+  const searchTerm = req.query.q || '';
 
   try {
     const query = {};
 
     if (searchTerm) {
-      query.blogTitle = { $regex: searchTerm, $options: "i" };
+      query.blogTitle = { $regex: searchTerm, $options: 'i' };
     }
 
     if (tag) {
@@ -40,8 +41,8 @@ export const getBlogs = async (req, res) => {
 
     const blogByTags = await getBlogsByTags();
 
-    res.render("blog", {
-      title: "Blog",
+    res.render('blog', {
+      title: 'Blog',
       haveAdditionalCss: true,
       allPosts,
       currentPage: page,
@@ -52,32 +53,30 @@ export const getBlogs = async (req, res) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).send("Server Error: Unable to fetch blogs");
+    res.status(500).send('Server Error: Unable to fetch blogs');
   }
 };
 
 export const getBlog = async (req, res) => {
-  const { blogId } = req.params;
+  const { slug } = req.params;
 
   try {
-    const blogPost = await Blog.findById(blogId)
+    const blogPost = await Blog.findOne({ slug: slug })
       .populate({
-        path: "blogComments",
+        path: 'blogComments',
         populate: {
-          path: "commentReplies",
-          model: "Reply",
+          path: 'commentReplies',
+          model: 'Reply',
         },
       })
       .exec();
 
     if (!blogPost) {
-      return res.status(404).send("Blog Post not found");
+      return res.status(404).send('Blog Post not found');
     }
 
     const allPosts = await Blog.find().sort({ createdAt: -1 }).exec();
-    const currentIndex = allPosts.findIndex(
-      (blog) => blog._id.toString() === blogId
-    );
+    const currentIndex = allPosts.findIndex((blog) => blog.slug === slug);
 
     const previousPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
     const nextPost =
@@ -86,8 +85,8 @@ export const getBlog = async (req, res) => {
 
     const blogByTags = await getBlogsByTags();
 
-    res.render("blog-details", {
-      title: "Post Details",
+    res.render('blog-details', {
+      title: 'Post Details',
       haveAdditionalCss: true,
       post: blogPost,
       nextPost,
@@ -97,12 +96,12 @@ export const getBlog = async (req, res) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).send("An error occurred while retrieving the blog post");
+    res.status(500).send('An error occurred while retrieving the blog post');
   }
 };
 
 export const createBlogPost = async (req, res) => {
-  console.log("Creating blog");
+  console.log('Creating blog');
   try {
     // Increase timeout for this request
     req.setTimeout(5 * 60 * 1000); // 5 minutes in milliseconds
@@ -110,31 +109,36 @@ export const createBlogPost = async (req, res) => {
     // Validate request body
     const { blogTitle, blogBody, ...otherFields } = req.body;
 
-
     if (!blogTitle || !blogBody) {
-      return res.status(400).json({ error: "Title and content are required" });
+      return res.status(400).json({ error: 'Title and content are required' });
     }
 
     // Upload images to Firebase
     const urls = await uploadToFirebase(req.files);
 
+    const slug = await slugify(blogTitle, { lower: true, strict: true });
+
+    console.log(slug);
+
     // Create blog data
     const blogData = {
       ...req.body,
       blogImgUrls: urls,
+      slug,
     };
 
     // Create blog post
-    console.log("Creating Blog Post...");
-    const blogPost = await Blog.create(blogData);
+    console.log('Creating Blog Post...');
+    const blogPost = new Blog(blogData);
+    await blogPost.save();
 
     // Send response
     return res.status(201).json(blogPost);
   } catch (error) {
-    console.error("Error creating blog post:", error.message);
+    console.error('Error creating blog post:', error.message);
     return res
       .status(500)
-      .json({ error: "An error occurred while creating the blog post" });
+      .json({ error: 'An error occurred while creating the blog post' });
   }
 };
 
@@ -144,7 +148,7 @@ export const createComment = async (req, res) => {
 
   // Validate and sanitize input
   if (!commentText || !commentAuthor) {
-    return res.status(400).json({ error: "Content and author are required" });
+    return res.status(400).json({ error: 'Content and author are required' });
   }
 
   const sanitizedContent = sanitizeHTML(commentText); // Sanitize HTML in content
@@ -157,7 +161,7 @@ export const createComment = async (req, res) => {
   };
 
   try {
-    console.log("Creating comment");
+    console.log('Creating comment');
     const comment = await Comment.create(newCommentData);
 
     await Blog.findByIdAndUpdate(blogId, {
@@ -171,21 +175,21 @@ export const createComment = async (req, res) => {
 
     return res.status(201).json(formattedComment);
   } catch (error) {
-    console.error("Error creating comment:", error.message);
+    console.error('Error creating comment:', error.message);
     return res
       .status(500)
-      .json({ error: "An error occurred while creating the comment" });
+      .json({ error: 'An error occurred while creating the comment' });
   }
 };
 
 export const createReply = async (req, res) => {
-  console.log("Creating reply");
+  console.log('Creating reply');
   const { commentId } = req.params;
   const { replyBody, replyAuthor } = req.body; // Destructure necessary fields
 
   // Validate input
   if (!replyBody || !replyAuthor) {
-    return res.status(400).json({ error: "Content and author are required" });
+    return res.status(400).json({ error: 'Content and author are required' });
   }
 
   // Sanitize input
@@ -209,14 +213,14 @@ export const createReply = async (req, res) => {
 
     // Send a successful response with the created reply
     return res.status(201).json({
-      message: "Reply created successfully",
+      message: 'Reply created successfully',
       reply,
     });
   } catch (error) {
-    console.error("Error creating reply:", error.message);
+    console.error('Error creating reply:', error.message);
     // Send a server error response
     return res.status(500).json({
-      error: "An error occurred while creating the reply",
+      error: 'An error occurred while creating the reply',
       details: error.message,
     });
   }

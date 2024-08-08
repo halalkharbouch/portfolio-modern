@@ -1309,7 +1309,7 @@
                         <div class="col-lg-4 col-md-6">
                            <div class="blog-item wow fadeInUp" data-wow-delay=".5s">
                               <div class="blog-thumb">
-                                 <a href="/blog/get-blog/<%= post._id %>">
+                                 <a href="/blog/<%= post.slug %>">
                                     <img src="<%= post.blogImgUrls[0] %>" alt="">
                                  </a>
                                  <a href="#" class="category">
@@ -1327,7 +1327,7 @@
                                                 post.blogComments.length %>)</a></li>
                                     </ul>
                                  </div>
-                                 <h3 class="blog-title"><a href="/blog/get-blog/<%= post._id %>">
+                                 <h3 class="blog-title"><a href="/blog/<%= post.slug %>">
                                        <%= post.blogTitle %>
                                     </a></h3>
                               </div>

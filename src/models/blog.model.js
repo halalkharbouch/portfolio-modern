@@ -1,4 +1,6 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
+import slugify from 'slugify';
+
 
 const blogSchema = new mongoose.Schema(
   {
@@ -7,16 +9,22 @@ const blogSchema = new mongoose.Schema(
       required: true,
     },
     blogDate: {
-      type: String
+      type: String,
     },
     blogKeyPoints: {
-      type: Array
+      type: Array,
     },
     blogConclusion: {
-      type: String
+      type: String,
     },
     blogTitle: {
       type: String,
+      required: true,
+      unique: true,
+    },
+    slug: {
+      type: String,
+      unique: true,
       required: true,
     },
     blogBody: {
@@ -24,7 +32,7 @@ const blogSchema = new mongoose.Schema(
       required: true,
     },
     blogType: {
-      type: String
+      type: String,
     },
     blogCategory: {
       type: String,
@@ -34,16 +42,18 @@ const blogSchema = new mongoose.Schema(
       type: Array,
     },
     blogImgUrls: {
-      type: Array
+      type: Array,
     },
-    blogComments: [{
-      type:mongoose.Schema.Types.ObjectId,
-      ref: 'Comment'
-    }]
+    blogComments: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Comment',
+      },
+    ],
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
-const Blog = mongoose.model("Blog", blogSchema);
+const Blog = mongoose.model('Blog', blogSchema);
 
 export default Blog;

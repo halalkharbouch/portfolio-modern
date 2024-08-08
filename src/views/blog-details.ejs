@@ -53,7 +53,6 @@
                            <div class="tj-post__content">
                               <p>
                                  <%- post.blogBody %>
-
                               </p>
                               <% if(post.blogKeyPoints.length> 0) {%>
                                  <h6>Key Points</h6>
@@ -115,7 +114,7 @@
                            <%if (previousPost) { %>
                               <div class="tj-navigation-post_inner prev_post">
                                  <div class="navigation-post_img">
-                                    <a href="/blog/get-blog/<%= previousPost._id %>"> <img
+                                    <a href="/blog/<%= previousPost.slug %>"> <img
                                           src="<%= previousPost.blogImgUrls[0] %>" alt=""> </a>
                                  </div>
                                  <div class="tj-content">
@@ -123,7 +122,7 @@
                                           class="fa-regular fa-angle-double-left"></i>previous</div>
                                     <div class="post_pagination_title">
                                        <h5 class="title">
-                                          <a href="/blog/get-blog/<%= previousPost._id %>">
+                                          <a href="/blog/<%= previousPost.slug %>">
                                              <%= previousPost.blogTitle %>
                                           </a>
                                        </h5>
@@ -147,14 +146,14 @@
                                     </div>
                                     <div class="post_pagination_title">
                                        <h5 class="title">
-                                          <a href="/blog/get-blog/<%= nextPost._id %>">
+                                          <a href="/blog/<%= nextPost.slug %>">
                                              <%= nextPost.blogTitle %>
                                           </a>
                                        </h5>
                                     </div>
                                  </div>
                                  <div class="navigation-post_img">
-                                    <a href="/blog/get-blog/<%= nextPost._id %>"> <img
+                                    <a href="/blog/<%= nextPost.slug %>"> <img
                                           src="<%= nextPost.blogImgUrls[0] %>" alt=""> </a>
                                  </div>
                               </div>
@@ -315,8 +314,7 @@
                            </li>
                            <li><a href="/blog?tag=Web Development">Web Development</a> (<%=
                                  blogByTags.webDevBlogs.length %>)</li>
-                           <li><a href="/blog?tag=3D Printing">3D Printing</a> (<%= blogByTags.printing3DBlogs.length %>
-                                 )</li>
+                           <li><a href="/blog?tag=3D Printing">3D Printing</a> (<%= blogByTags.printing3DBlogs.length %>)</li>
                            <li><a href="/blog?tag=Finance">Finance</a> (<%= blogByTags.financeBlogs.length %>)</li>
                         </ul>
                      </div>
@@ -330,7 +328,7 @@
                            <% recentPosts.forEach(recentPost=> {%>
                               <li>
                                  <div class="recent-post_thumb">
-                                    <a href="/blog/get-blog/<%= recentPost._id %>">
+                                    <a href="/blog/<%= recentPost.slug %>">
                                        <img src="<%= recentPost.blogImgUrls[0] %>" alt="">
                                     </a>
                                  </div>

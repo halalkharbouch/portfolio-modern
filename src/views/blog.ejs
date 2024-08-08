@@ -1,170 +1,221 @@
 ﻿<%- include('partials/header.ejs') %>
 
-   <main class="site-content" id="content">
-      <!-- START: Breadcrumb Area -->
-      <section class="breadcrumb_area" data-bg-image=".//img/breadcrumb/breadcrumb-bg.jpg" data-bg-color="#140C1C">
-         <div class="container">
-            <div class="row">
-               <div class="col">
-                  <div class="breadcrumb_content d-flex flex-column align-items-center">
-                     <h2 class="title wow fadeInUp" data-wow-delay=".3s">Blog</h2>
-                     <div class="breadcrumb_navigation wow fadeInUp" data-wow-delay=".5s">
-                        <span><a href="/">Home</a></span>
-                        <i class="far fa-long-arrow-right"></i>
-                        <span class="current-item">Blog</span>
-                     </div>
-                  </div>
-               </div>
+<main class="site-content" id="content">
+  <!-- START: Breadcrumb Area -->
+  <section
+    class="breadcrumb_area"
+    data-bg-image=".//img/breadcrumb/breadcrumb-bg.jpg"
+    data-bg-color="#140C1C"
+  >
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="breadcrumb_content d-flex flex-column align-items-center">
+            <h2 class="title wow fadeInUp" data-wow-delay=".3s">Blog</h2>
+            <div
+              class="breadcrumb_navigation wow fadeInUp"
+              data-wow-delay=".5s"
+            >
+              <span><a href="/">Home</a></span>
+              <i class="far fa-long-arrow-right"></i>
+              <span class="current-item">Blog</span>
             </div>
-         </div>
-      </section>
-      <!-- END: Breadcrumb Area -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- END: Breadcrumb Area -->
 
-      <!-- START: Blog Section -->
-      <section class="full-width tj-posts__area">
-         <div class="container">
-            <div class="row justify-content-center">
-               <div class="col-lg-8">
-                  <div class="tj-post__container">
-                     <blockquote class="wp-block-quote wow fadeInUp" data-wow-delay=".3s">
-                        <p>
-                           “Welcome to our blog, a hub where we share our journey, expertise, and achievements in the
-                           dynamic world of technology and business. Here, you'll find insights and stories on a diverse
-                           range of topics including Business, IT Support, 3D Printing, Web Development, and Finance.
-                           Our goal is to provide valuable information that helps you stay ahead in the digital age,
-                           leveraging the latest innovations and best practices. Join us as we explore the cutting-edge
-                           developments and unlock new growth opportunities together.”
-                        </p>
-                        <p><cite>Bawan Allah Bilyaminu</cite></p>
-                     </blockquote>
-                     <% if (allPosts.length===0) {%>
-                        <div class="wow fadeInUp">
-                           <iframe src="https://giphy.com/embed/3oEjHGrVGrqgFFknfO" width="480" height="269"
-                              frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
-                           <p><a href="https://giphy.com/gifs/comic-con-jack-sparrow-sdcc2016-3oEjHGrVGrqgFFknfO"></a>
-                           </p>
-                           <p>Oops, this page search seems dry. Try another category!</p>
-                        </div>
-
-                        <%} %>
-                           <% allPosts.forEach((post)=> {%>
-                              <article class="tj-post wow fadeInUp" data-wow-delay=".3s">
-                                 <div class="tj-post__thumb">
-                                    <a href="/blog/get-blog/<%= post._id %>">
-                                       <img src="<%= post.blogImgUrls[1] %>" alt="">
-                                    </a>
-
-                                    <a href="#" class="category">Tutorial</a>
-                                 </div>
-                                 <div class="tj-post__content">
-                                    <div class="tj-post__meta entry-meta">
-                                       <span><i class="fa-light fa-user"></i> <a href="#">
-                                             <%= post.author %>
-                                          </a></span>
-                                       <span><i class="fa-light fa-calendar-days"></i>
-                                          <%= formatDateUtil(post.createdAt) %>
-                                       </span>
-                                       <span><i class="fa-light fa-comments"></i><a href="#">Comments (<%=
-                                                post.blogComments.length %>)</a></span>
-                                    </div>
-                                    <h3 class="tj-post__title entry-title">
-                                       <a href="/blog/get-blog/<%= post._id %>">
-                                          <%= post.blogTitle %>
-                                       </a>
-                                    </h3>
-                                    <div class="tj-post__excerpt">
-                                       <p>
-                                          <%= trimText(post.blogConclusion, 250) %>
-                                       </p>
-                                    </div>
-                                    <div class="tj-post__btn">
-                                       <a href="/blog/get-blog/<%= post._id %>/" class="tj-btn-primary">Read more</a>
-                                    </div>
-                                 </div>
-                              </article>
-                              <%}) %>
-
-                                 <div class="tj__pagination wow fadeInUp" data-wow-delay=".3s">
-                                    <ul>
-                                       <% if (currentPage> 1) { %>
-                                          <li>
-                                             <a class="page-numbers" href="/blog?page=<%= currentPage - 1 %>"><i
-                                                   class="fal fa-arrow-left"></i></a>
-                                          </li>
-                                          <% } %>
-
-                                             <% for (let i=1; i <=totalPages; i++) { %>
-                                                <% if (i===currentPage) { %>
-                                                   <li><span class="page-numbers current">
-                                                         <%= i %>
-                                                      </span></li>
-                                                   <% } else { %>
-                                                      <li><a class="page-numbers" href="/blog?page=<%= i %>">
-                                                            <%= i %>
-                                                         </a></li>
-                                                      <% } %>
-                                                         <% } %>
-
-                                                            <% if (currentPage < totalPages) { %>
-                                                               <li>
-                                                                  <a class="page-numbers"
-                                                                     href="/blog?page=<%= currentPage + 1 %>"><i
-                                                                        class="fal fa-arrow-right"></i></a>
-                                                               </li>
-                                                               <% } %>
-                                    </ul>
-                                 </div>
-                  </div>
-               </div>
-               <div class="col-lg-4">
-                  <div class="tj_main_sidebar">
-                     <div class="sidebar_widget widget_search wow fadeInUp" data-wow-delay=".3s">
-                        <div class="tj-widget__search form_group">
-                           <form class="search-form" action="/blog" method="get">
-                              <input type="search" id="search" name="q" placeholder="Search..."
-                                 value="<%= searchTerm %>">
-                              <button class="search-btn" type="submit"><i
-                                    class="fa-light fa-magnifying-glass"></i></button>
-                           </form>
-                        </div>
-                     </div>
-
-                     <div class="sidebar_widget widget_categories wow fadeInUp" data-wow-delay=".3s">
-                        <div class="widget_title">
-                           <h3 class="title">Categories</h3>
-                        </div>
-
-                        <ul>
-                           <li><a href="/blog?tag=Business">Business</a> (<%= blogByTags.businessBlogs.length %>)</li>
-                           <li><a href="/blog?tag=IT Support">IT Support</a> (<%= blogByTags.itSupportBlogs.length %>)
-                           </li>
-                           <li><a href="/blog?tag=Web Development">Web Development</a> (<%=
-                                 blogByTags.webDevBlogs.length %>)</li>
-                           <li><a href="/blog?tag=3D Printing">3D Printing</a> (<%= blogByTags.printing3DBlogs.length %>)</li>
-                           <li><a href="/blog?tag=Finance">Finance</a> (<%= blogByTags.financeBlogs.length %>)</li>
-                        </ul>
-                     </div>
-
-
-
-                     <div class="sidebar_widget widget_tag_cloud wow fadeInUp" data-wow-delay=".3s">
-                        <div class="widget_title">
-                           <h3 class="title">Popular tag</h3>
-                        </div>
-
-                        <div class="tagcloud">
-                           <a href="/blog?tag=IT Support">IT Support</a>
-                           <a href="/blog?tag=Web Development">Web Development</a>
-                           <a href="/blog?tag=3D Printing">3D Printing</a>
-                           <a href="/blog?tag=Graphic Design">Graphic Design</a>
-                        </div>
-                     </div>
-                  </div>
-               </div>
+  <!-- START: Blog Section -->
+  <section class="full-width tj-posts__area">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="tj-post__container">
+            <blockquote
+              class="wp-block-quote wow fadeInUp"
+              data-wow-delay=".3s"
+            >
+              <p>
+                “Welcome to our blog, a hub where we share our journey,
+                expertise, and achievements in the dynamic world of technology
+                and business. Here, you'll find insights and stories on a
+                diverse range of topics including Business, IT Support, 3D
+                Printing, Web Development, and Finance. Our goal is to provide
+                valuable information that helps you stay ahead in the digital
+                age, leveraging the latest innovations and best practices. Join
+                us as we explore the cutting-edge developments and unlock new
+                growth opportunities together.”
+              </p>
+              <p><cite>Bawan Allah Bilyaminu</cite></p>
+            </blockquote>
+            <% if (allPosts.length===0) {%>
+            <div class="wow fadeInUp">
+              <iframe
+                src="https://giphy.com/embed/3oEjHGrVGrqgFFknfO"
+                width="480"
+                height="269"
+                frameBorder="0"
+                class="giphy-embed"
+                allowFullScreen
+              ></iframe>
+              <p>
+                <a
+                  href="https://giphy.com/gifs/comic-con-jack-sparrow-sdcc2016-3oEjHGrVGrqgFFknfO"
+                ></a>
+              </p>
+              <p>Oops, this page search seems dry. Try another category!</p>
             </div>
-         </div>
-      </section>
-      <!-- END: Blog Section -->
-   </main>
 
-   <%- include("partials/footer.ejs") %>
+            <%} %> <% allPosts.forEach((post)=> {%>
+            <article class="tj-post wow fadeInUp" data-wow-delay=".3s">
+              <div class="tj-post__thumb">
+                <a href="/blog/<%= post.slug %>">
+                  <img src="<%= post.blogImgUrls[1] %>" alt="" />
+                </a>
+
+                <a href="#" class="category">Tutorial</a>
+              </div>
+              <div class="tj-post__content">
+                <div class="tj-post__meta entry-meta">
+                  <span
+                    ><i class="fa-light fa-user"></i>
+                    <a href="#"> <%= post.author %> </a></span
+                  >
+                  <span
+                    ><i class="fa-light fa-calendar-days"></i>
+                    <%= formatDateUtil(post.createdAt) %>
+                  </span>
+                  <span
+                    ><i class="fa-light fa-comments"></i
+                    ><a href="#"
+                      >Comments (<%= post.blogComments.length %>)</a
+                    ></span
+                  >
+                </div>
+                <h3 class="tj-post__title entry-title">
+                  <a href="/blog/<%= post.slug %>"> <%= post.blogTitle %> </a>
+                </h3>
+                <div class="tj-post__excerpt">
+                  <p><%= trimText(post.blogConclusion, 250) %></p>
+                </div>
+                <div class="tj-post__btn">
+                  <a href="/blog/<%= post.slug %>/" class="tj-btn-primary"
+                    >Read more</a
+                  >
+                </div>
+              </div>
+            </article>
+            <%}) %>
+
+            <div class="tj__pagination wow fadeInUp" data-wow-delay=".3s">
+              <ul>
+                <% if (currentPage> 1) { %>
+                <li>
+                  <a
+                    class="page-numbers"
+                    href="/blog?page=<%= currentPage - 1 %>"
+                    ><i class="fal fa-arrow-left"></i
+                  ></a>
+                </li>
+                <% } %> <% for (let i=1; i <=totalPages; i++) { %> <% if
+                (i===currentPage) { %>
+                <li><span class="page-numbers current"> <%= i %> </span></li>
+                <% } else { %>
+                <li>
+                  <a class="page-numbers" href="/blog?page=<%= i %>">
+                    <%= i %>
+                  </a>
+                </li>
+                <% } %> <% } %> <% if (currentPage < totalPages) { %>
+                <li>
+                  <a
+                    class="page-numbers"
+                    href="/blog?page=<%= currentPage + 1 %>"
+                    ><i class="fal fa-arrow-right"></i
+                  ></a>
+                </li>
+                <% } %>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="tj_main_sidebar">
+            <div
+              class="sidebar_widget widget_search wow fadeInUp"
+              data-wow-delay=".3s"
+            >
+              <div class="tj-widget__search form_group">
+                <form class="search-form" action="/blog" method="get">
+                  <input
+                    type="search"
+                    id="search"
+                    name="q"
+                    placeholder="Search..."
+                    value="<%= searchTerm %>"
+                  />
+                  <button class="search-btn" type="submit">
+                    <i class="fa-light fa-magnifying-glass"></i>
+                  </button>
+                </form>
+              </div>
+            </div>
+
+            <div
+              class="sidebar_widget widget_categories wow fadeInUp"
+              data-wow-delay=".3s"
+            >
+              <div class="widget_title">
+                <h3 class="title">Categories</h3>
+              </div>
+
+              <ul>
+                <li>
+                  <a href="/blog?tag=Business">Business</a> (<%=
+                  blogByTags.businessBlogs.length %>)
+                </li>
+                <li>
+                  <a href="/blog?tag=IT Support">IT Support</a> (<%=
+                  blogByTags.itSupportBlogs.length %>)
+                </li>
+                <li>
+                  <a href="/blog?tag=Web Development">Web Development</a> (<%=
+                  blogByTags.webDevBlogs.length %>)
+                </li>
+                <li>
+                  <a href="/blog?tag=3D Printing">3D Printing</a> (<%=
+                  blogByTags.printing3DBlogs.length %>)
+                </li>
+                <li>
+                  <a href="/blog?tag=Finance">Finance</a> (<%=
+                  blogByTags.financeBlogs.length %>)
+                </li>
+              </ul>
+            </div>
+
+            <div
+              class="sidebar_widget widget_tag_cloud wow fadeInUp"
+              data-wow-delay=".3s"
+            >
+              <div class="widget_title">
+                <h3 class="title">Popular tag</h3>
+              </div>
+
+              <div class="tagcloud">
+                <a href="/blog?tag=IT Support">IT Support</a>
+                <a href="/blog?tag=Web Development">Web Development</a>
+                <a href="/blog?tag=3D Printing">3D Printing</a>
+                <a href="/blog?tag=Graphic Design">Graphic Design</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- END: Blog Section -->
+</main>
+
+<%- include("partials/footer.ejs") %>
