@@ -1,11 +1,5 @@
 /*-----------------------------------------------------------------------------------
 
-Theme Name: Gerold - Personal Portfolio HTML5 Template
-Theme URI: https://themejunction.net/html/gerold/demo/
-Author: Theme-Junction
-Author URI: https://themeforest.net/user/theme-junction
-Description: Gerold - Personal Portfolio HTML5 Template
-
 -----------------------------------------------------------------------------------
 
 /***************************************************
